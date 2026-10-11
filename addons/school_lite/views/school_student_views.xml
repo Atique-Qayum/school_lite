@@ -27,6 +27,8 @@
         <field name="arch" type="xml">
             <form>
                 <header>
+                    <button name="action_enroll" type="object" string="Enroll" class="oe_highlight"
+                            invisible="state != 'draft'"/>
                     <field name="state" widget="statusbar" statusbar_visible="draft,enrolled,graduated"/>
                 </header>
                 <sheet>

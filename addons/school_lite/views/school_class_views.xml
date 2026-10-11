@@ -46,7 +46,7 @@
                                     <field name="birth_date"/>
                                     <field name="guardian_name"/>
                                     <field name="guardian_phone"/>
-                                    <field name="state"/>
+                                    <field name="state" widget="badge" readonly="1"/>
                                 </list>
                             </field>
                         </page>

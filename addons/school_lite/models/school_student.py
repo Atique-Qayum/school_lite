@@ -1,7 +1,7 @@
 from dateutil.relativedelta import relativedelta
 
 from odoo import _, api, fields, models
-from odoo.exceptions import ValidationError
+from odoo.exceptions import UserError, ValidationError
 
 
 class SchoolStudent(models.Model):
@@ -56,3 +56,11 @@ class SchoolStudent(models.Model):
             if not vals.get('code'):
                 vals['code'] = self.env['ir.sequence'].next_by_code('school.student')
         return super().create(vals_list)
+
+    def action_enroll(self):
+        for student in self:
+            if student.state != 'draft':
+                raise UserError(_("Only draft students can be enrolled."))
+            if not student.class_id:
+                raise UserError(_("Set a class for %s before enrolling.", student.name))
+        self.state = 'enrolled'
