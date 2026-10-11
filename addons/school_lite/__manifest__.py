@@ -6,6 +6,9 @@
     'author': 'Muhammad Atique Qayum',
     'license': 'LGPL-3',
     'depends': ['base', 'mail'],
-    'data': [],
+    'data': [
+        'security/school_security.xml',
+        'security/ir.model.access.csv',
+    ],
     'application': True,
 }
