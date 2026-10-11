@@ -19,6 +19,12 @@
         <field name="model">school.class</field>
         <field name="arch" type="xml">
             <form>
+                <header>
+                    <button name="%(school_class_enroll_wizard_action)d" type="action"
+                            string="Enroll in Subject"
+                            context="{'default_class_id': id}"
+                            groups="school_lite.group_school_manager"/>
+                </header>
                 <sheet>
                     <div class="oe_button_box" name="button_box">
                         <button name="action_view_students" type="object" class="oe_stat_button" icon="fa-users">

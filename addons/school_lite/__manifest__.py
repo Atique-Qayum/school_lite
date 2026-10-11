@@ -11,6 +11,7 @@
         'security/ir.model.access.csv',
         'data/school_sequence.xml',
         'views/school_student_views.xml',
+        'wizard/school_class_enroll_wizard_views.xml',
         'views/school_class_views.xml',
         'views/school_subject_views.xml',
         'views/school_enrollment_views.xml',

@@ -7,3 +7,4 @@ access_school_subject_teacher,school.subject teacher,model_school_subject,group_
 access_school_subject_manager,school.subject manager,model_school_subject,group_school_manager,1,1,1,1
 access_school_enrollment_teacher,school.enrollment teacher,model_school_enrollment,group_school_teacher,1,1,0,0
 access_school_enrollment_manager,school.enrollment manager,model_school_enrollment,group_school_manager,1,1,1,1
+access_school_class_enroll_wizard_manager,school.class.enroll.wizard manager,model_school_class_enroll_wizard,group_school_manager,1,1,1,1
