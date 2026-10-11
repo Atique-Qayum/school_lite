@@ -10,6 +10,7 @@
                 <field name="name"/>
                 <field name="class_id"/>
                 <field name="birth_date" optional="show"/>
+                <field name="age" optional="show"/>
                 <field name="guardian_name" optional="hide"/>
                 <field name="guardian_phone" optional="hide"/>
                 <field name="state" widget="badge"
@@ -42,6 +43,7 @@
                             <field name="code"/>
                             <field name="class_id"/>
                             <field name="birth_date"/>
+                            <field name="age" invisible="not birth_date"/>
                         </group>
                         <group string="Guardian">
                             <field name="guardian_name"/>
