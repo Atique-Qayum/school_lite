@@ -1,6 +1,7 @@
 from dateutil.relativedelta import relativedelta
 
-from odoo import api, fields, models
+from odoo import _, api, fields, models
+from odoo.exceptions import ValidationError
 
 
 class SchoolStudent(models.Model):
@@ -41,6 +42,13 @@ class SchoolStudent(models.Model):
                 student.age = relativedelta(today, student.birth_date).years
             else:
                 student.age = 0
+
+    @api.constrains('birth_date')
+    def _check_birth_date(self):
+        today = fields.Date.context_today(self)
+        for student in self:
+            if student.birth_date and student.birth_date > today:
+                raise ValidationError(_("The birth date cannot be in the future."))
 
     @api.model_create_multi
     def create(self, vals_list):

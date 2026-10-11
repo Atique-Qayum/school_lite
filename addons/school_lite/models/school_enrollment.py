@@ -1,4 +1,5 @@
-from odoo import fields, models
+from odoo import _, api, fields, models
+from odoo.exceptions import ValidationError
 
 
 class SchoolEnrollment(models.Model):
@@ -18,3 +19,17 @@ class SchoolEnrollment(models.Model):
         default='draft',
         required=True,
     )
+
+    _sql_constraints = [
+        (
+            'student_subject_unique',
+            'UNIQUE(student_id, subject_id)',
+            'A student can only be enrolled once in the same subject.',
+        ),
+    ]
+
+    @api.constrains('grade')
+    def _check_grade(self):
+        for enrollment in self:
+            if not 0 <= enrollment.grade <= 100:
+                raise ValidationError(_("The grade must be between 0 and 100."))
