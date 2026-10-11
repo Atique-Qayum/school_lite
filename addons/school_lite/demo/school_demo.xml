@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+
+    <!-- The standard Odoo demo user (login: demo / password: demo) becomes a Teacher -->
+    <record id="base.user_demo" model="res.users">
+        <field name="groups_id" eval="[Command.link(ref('school_lite.group_school_teacher'))]"/>
+    </record>
+
+    <!-- Subjects -->
+    <record id="school_subject_math" model="school.subject">
+        <field name="name">Mathematics</field>
+        <field name="code">MATH</field>
+        <field name="credit_hours">4</field>
+    </record>
+    <record id="school_subject_english" model="school.subject">
+        <field name="name">English</field>
+        <field name="code">ENG</field>
+        <field name="credit_hours">3</field>
+    </record>
+    <record id="school_subject_science" model="school.subject">
+        <field name="name">Science</field>
+        <field name="code">SCI</field>
+        <field name="credit_hours">3</field>
+    </record>
+
+    <!-- Classes: one per teacher, so the record rule can be seen in action -->
+    <record id="school_class_5a" model="school.class">
+        <field name="name">Grade 5 A</field>
+        <field name="academic_year">2026-2027</field>
+        <field name="teacher_id" ref="base.user_demo"/>
+    </record>
+    <record id="school_class_6b" model="school.class">
+        <field name="name">Grade 6 B</field>
+        <field name="academic_year">2026-2027</field>
+        <field name="teacher_id" ref="base.user_admin"/>
+    </record>
+
+    <!-- Students: the code is left out on purpose, the sequence fills it in -->
+    <record id="school_student_sara" model="school.student">
+        <field name="name">Sara Ahmed</field>
+        <field name="birth_date">2015-03-14</field>
+        <field name="class_id" ref="school_class_5a"/>
+        <field name="guardian_name">Ahmed Khan</field>
+        <field name="guardian_phone">+971 50 555 0101</field>
+    </record>
+    <record id="school_student_omar" model="school.student">
+        <field name="name">Omar Hassan</field>
+        <field name="birth_date">2015-09-02</field>
+        <field name="class_id" ref="school_class_5a"/>
+        <field name="guardian_name">Layla Hassan</field>
+        <field name="guardian_phone">+971 50 555 0102</field>
+    </record>
+    <record id="school_student_maya" model="school.student">
+        <field name="name">Maya Pillai</field>
+        <field name="birth_date">2016-01-21</field>
+        <field name="class_id" ref="school_class_5a"/>
+        <field name="guardian_name">Ravi Pillai</field>
+        <field name="guardian_phone">+971 50 555 0103</field>
+    </record>
+    <record id="school_student_james" model="school.student">
+        <field name="name">James Carter</field>
+        <field name="birth_date">2014-06-30</field>
+        <field name="class_id" ref="school_class_6b"/>
+        <field name="guardian_name">Emily Carter</field>
+        <field name="guardian_phone">+971 50 555 0104</field>
+    </record>
+    <record id="school_student_noor" model="school.student">
+        <field name="name">Noor Saleh</field>
+        <field name="birth_date">2014-11-11</field>
+        <field name="class_id" ref="school_class_6b"/>
+        <field name="guardian_name">Yusuf Saleh</field>
+        <field name="guardian_phone">+971 50 555 0105</field>
+    </record>
+
+    <!-- Enroll four students through the real button method; Maya stays in draft -->
+    <function model="school.student" name="action_enroll" eval="[[
+        ref('school_student_sara'),
+        ref('school_student_omar'),
+        ref('school_student_james'),
+        ref('school_student_noor'),
+    ]]"/>
+
+    <!-- Enrollments -->
+    <record id="school_enrollment_sara_math" model="school.enrollment">
+        <field name="student_id" ref="school_student_sara"/>
+        <field name="subject_id" ref="school_subject_math"/>
+        <field name="grade">88</field>
+    </record>
+    <record id="school_enrollment_sara_english" model="school.enrollment">
+        <field name="student_id" ref="school_student_sara"/>
+        <field name="subject_id" ref="school_subject_english"/>
+        <field name="grade">74</field>
+    </record>
+    <record id="school_enrollment_omar_math" model="school.enrollment">
+        <field name="student_id" ref="school_student_omar"/>
+        <field name="subject_id" ref="school_subject_math"/>
+        <field name="grade">42</field>
+    </record>
+    <record id="school_enrollment_maya_science" model="school.enrollment">
+        <field name="student_id" ref="school_student_maya"/>
+        <field name="subject_id" ref="school_subject_science"/>
+    </record>
+    <record id="school_enrollment_james_science" model="school.enrollment">
+        <field name="student_id" ref="school_student_james"/>
+        <field name="subject_id" ref="school_subject_science"/>
+        <field name="grade">91</field>
+    </record>
+    <record id="school_enrollment_noor_english" model="school.enrollment">
+        <field name="student_id" ref="school_student_noor"/>
+        <field name="subject_id" ref="school_subject_english"/>
+        <field name="grade">35</field>
+    </record>
+
+    <!-- Confirm some enrollments through the real button method -->
+    <function model="school.enrollment" name="action_confirm" eval="[[
+        ref('school_enrollment_sara_math'),
+        ref('school_enrollment_sara_english'),
+        ref('school_enrollment_omar_math'),
+        ref('school_enrollment_james_science'),
+    ]]"/>
+
+</odoo>

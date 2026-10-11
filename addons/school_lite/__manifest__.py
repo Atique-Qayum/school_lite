@@ -16,5 +16,8 @@
         'views/school_enrollment_views.xml',
         'views/school_menus.xml',
     ],
+    'demo': [
+        'demo/school_demo.xml',
+    ],
     'application': True,
 }
