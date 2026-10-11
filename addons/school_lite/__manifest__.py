@@ -9,6 +9,11 @@
     'data': [
         'security/school_security.xml',
         'security/ir.model.access.csv',
+        'views/school_student_views.xml',
+        'views/school_class_views.xml',
+        'views/school_subject_views.xml',
+        'views/school_enrollment_views.xml',
+        'views/school_menus.xml',
     ],
     'application': True,
 }

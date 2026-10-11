@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="school_subject_view_list" model="ir.ui.view">
+        <field name="name">school.subject.view.list</field>
+        <field name="model">school.subject</field>
+        <field name="arch" type="xml">
+            <list editable="bottom">
+                <field name="code"/>
+                <field name="name"/>
+                <field name="credit_hours"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="school_subject_action" model="ir.actions.act_window">
+        <field name="name">Subjects</field>
+        <field name="res_model">school.subject</field>
+        <field name="view_mode">list</field>
+    </record>
+
+</odoo>

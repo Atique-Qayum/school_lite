@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="school_enrollment_view_list" model="ir.ui.view">
+        <field name="name">school.enrollment.view.list</field>
+        <field name="model">school.enrollment</field>
+        <field name="arch" type="xml">
+            <list editable="bottom">
+                <field name="student_id"/>
+                <field name="subject_id"/>
+                <field name="enrollment_date"/>
+                <field name="grade" decoration-danger="grade &lt; 50"/>
+                <field name="state"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="school_enrollment_action" model="ir.actions.act_window">
+        <field name="name">Enrollments</field>
+        <field name="res_model">school.enrollment</field>
+        <field name="view_mode">list</field>
+    </record>
+
+</odoo>
