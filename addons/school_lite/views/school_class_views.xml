@@ -9,6 +9,7 @@
                 <field name="name"/>
                 <field name="academic_year"/>
                 <field name="teacher_id"/>
+                <field name="student_count"/>
             </list>
         </field>
     </record>
@@ -19,6 +20,11 @@
         <field name="arch" type="xml">
             <form>
                 <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_students" type="object" class="oe_stat_button" icon="fa-users">
+                            <field name="student_count" widget="statinfo" string="Students"/>
+                        </button>
+                    </div>
                     <div class="oe_title">
                         <label for="name"/>
                         <h1>
