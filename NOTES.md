@@ -104,7 +104,4 @@ teacher".
 
 ## Tools I used
 
-I am new to Odoo. I built this module with substantial help from an AI assistant (Claude), which
-drafted most of the code, checked the patterns against the Odoo 18.0 source code and explained the
-Odoo concepts to me step by step. I ran the installs, the tests and the manual checks above on my
-own machine.
+I am new to Odoo. I built this module with substantial help from an AI assistant (Claude).
